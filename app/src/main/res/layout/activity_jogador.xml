@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.apaul.myapplication.Jogador">
+
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:background="#000000"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.65"
+            android:background="#F33"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="0.4">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:layout_margin="8dp"
+                    android:background="#321321"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:layout_margin="8dp"
+                    android:background="#984331"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.6"
+                    android:layout_margin="8dp"
+                    android:background="#984331"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:layout_margin="8dp"
+                    android:background="#321321"
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:layout_margin="8dp"
+                    android:background="#321321"
+                    />
+
+            </LinearLayout>
+            </LinearLayout>
+
+    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/barra"
+        android:layout_centerVertical="true"
+        android:src="@drawable/barra"/>
+
+</android.support.percent.PercentRelativeLayout>

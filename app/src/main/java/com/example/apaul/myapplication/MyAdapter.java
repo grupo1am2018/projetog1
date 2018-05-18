@@ -2,6 +2,7 @@ package com.example.apaul.myapplication;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -60,7 +61,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "This is: " + nomeJogador[position], Toast.LENGTH_SHORT).show();
+                Intent myIntent = new Intent(context, Jogador.class);
+                context.startActivity(myIntent);
             }
         });
     }
