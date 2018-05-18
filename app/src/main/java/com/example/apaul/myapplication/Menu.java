@@ -33,6 +33,7 @@ public class Menu extends AppCompatActivity {
             transaction.replace(R.id.content, selectedFragment);
             transaction.commit();
             return true;
+            ""
         }
 
     };
@@ -45,6 +46,7 @@ public class Menu extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content, BlankFragment.newInstance());
         transaction.commit();
+
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
