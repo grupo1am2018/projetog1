@@ -16,7 +16,10 @@ tools:context="com.example.apaul.myapplication.Menu">
 
 
 </FrameLayout>
-
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/menubutton"/>
 <android.support.design.widget.BottomNavigationView
     android:id="@+id/navigation"
     android:layout_width="match_parent"
@@ -24,5 +27,11 @@ tools:context="com.example.apaul.myapplication.Menu">
     android:layout_gravity="bottom"
     android:background="#292"
     app:menu="@menu/navigation" />
+
+    <com.example.apaul.myapplication.Menu.DrawingView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/drawer"
+        android:visibility="gone"/>
 
 </LinearLayout>

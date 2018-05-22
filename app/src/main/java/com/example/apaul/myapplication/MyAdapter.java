@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -51,12 +52,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         return viewHolder;
     }
 
+
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         int width = (int) Math.round(devicewidth * 0.7);
         int height = (int) (deviceheight * 0.7);
         Picasso.with(context).load("https://as01.epimg.net/img/comunes/fotos/fichas/deportistas/a/and/large/31985.png").fit().into(holder.logo);
+
         holder.name.setText(nomeJogador[position]);
         holder.logo.setOnClickListener(new View.OnClickListener() {
             @Override

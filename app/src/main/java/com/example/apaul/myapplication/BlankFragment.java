@@ -6,7 +6,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.TextViewCompat;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -21,6 +23,7 @@ import android.widget.TextView;
  * create an instance of this fragment.
  */
 public class BlankFragment extends Fragment {
+    private GestureDetector gestureDetector;
     public BlankFragment() {
         // Required empty public constructor
     }
@@ -38,24 +41,59 @@ public class BlankFragment extends Fragment {
 
 
     }
-
+    float dX, dY;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_blank, container, false);
         View jogadores = (View) view.findViewById(R.id.jogadores);
-        jogadores.setOnClickListener(new View.OnClickListener() {
+        gestureDetector = new GestureDetector(getActivity(), new SingleTapConfirm());
+
+
+        jogadores.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(getActivity(), MainActivity.class);
-                getActivity().startActivity(myIntent);
+            public boolean onTouch(View v, MotionEvent event) {
+                if (gestureDetector.onTouchEvent(event)) {
+
+                    Intent myIntent = new Intent(getActivity(), MainActivity.class);
+                    getActivity().startActivity(myIntent);
+
+                    return true;
+                } else {
+                    switch (event.getActionMasked()) {
+
+                        case MotionEvent.ACTION_DOWN:
+
+                            dX = v.getX() - event.getRawX();
+                            dY = v.getY() - event.getRawY();
+                            break;
+
+                        case MotionEvent.ACTION_MOVE:
+
+                            v.animate()
+                                    .x(event.getRawX() + dX)
+                                    .y(event.getRawY() + dY)
+                                    .setDuration(0)
+                                    .start();
+                            break;
+                        default:
+                            return false;
+                    }
+                    return true;
+                }
             }
         });
         return view;
     }
 
+    private class SingleTapConfirm extends GestureDetector.SimpleOnGestureListener {
 
+        @Override
+        public boolean onSingleTapUp(MotionEvent event) {
+            return true;
+        }
+    }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -80,4 +118,6 @@ public class BlankFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
 }
+

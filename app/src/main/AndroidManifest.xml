@@ -23,7 +23,8 @@
             android:label="@string/title_activity_menu" />
         <activity
             android:name=".Jogador"
-            android:label="@string/title_activity_jogador"></activity>
+            android:label="@string/title_activity_jogador" />
+        <activity android:name=".Plantel"></activity>
     </application>
 
 </manifest>
