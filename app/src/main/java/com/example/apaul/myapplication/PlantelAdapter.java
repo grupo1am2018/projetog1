@@ -11,20 +11,14 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-
 /**
- * Created by apaul on 01/05/2018.
+ * Created by apaul on 25/05/2018.
  */
 
-public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
-
+public class PlantelAdapter extends RecyclerView.Adapter<PlantelHolder> {
     String[] nomeJogador;
     Bitmap[] fotoJogador;
     float dX, dY;
@@ -33,7 +27,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     int deviceheight;
     private GestureDetector gestureDetector;
 
-    public MyAdapter(String[] nomeJogador, Context context) {
+    public PlantelAdapter(String[] nomeJogador, Context context) {
         this.nomeJogador = nomeJogador;
         //this.fotoJogador = fotoJogador;
         this.context = context;
@@ -70,16 +64,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         }
     };
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.jogador, parent, false);
-        MyViewHolder viewHolder = new MyViewHolder(v);
+    public PlantelHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.camisola, parent, false);
+        PlantelHolder viewHolder = new PlantelHolder(v);
         DisplayMetrics displaymetrics = new DisplayMetrics();
         ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         //if you need three fix imageview in width
-        devicewidth = displaymetrics.widthPixels / 3;
+        devicewidth =  (int) Math.round(displaymetrics.widthPixels * 0.10);
 
         //if you need 4-5-6 anything fix imageview in height
-        deviceheight = displaymetrics.heightPixels / 4;
+        deviceheight = (int) Math.round(displaymetrics.heightPixels * 0.10);
 
         v.getLayoutParams().width = devicewidth;
 
@@ -90,20 +84,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(PlantelHolder holder, final int position) {
 
-        gestureDetector = new GestureDetector(context, new SingleTapConfirm());
-        holder.jogadorrl.setOnTouchListener(motionEvent);
-        Picasso.with(context).load("https://as01.epimg.net/img/comunes/fotos/fichas/deportistas/a/and/large/31985.png").fit().into(holder.logo);
-
-        holder.name.setText(nomeJogador[position]);
-        holder.logo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(context, Jogador.class);
-                context.startActivity(myIntent);
-            }
-        });
+        gestureDetector = new GestureDetector(context, new PlantelAdapter.SingleTapConfirm());
+        int width = (int) Math.round(devicewidth * 0.7);
+        int height = (int) (deviceheight * 0.7);
+        Picasso.with(context).load(R.drawable.defesa).fit().into(holder.camisolaImage);
+        holder.camisolaRL.setOnTouchListener(motionEvent);
     }
     private class SingleTapConfirm extends GestureDetector.SimpleOnGestureListener {
 

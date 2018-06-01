@@ -1,12 +1,14 @@
 package com.example.apaul.myapplication;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -34,7 +36,7 @@ public class Menu extends AppCompatActivity {
             Fragment selectedFragment = null;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    selectedFragment = BlankFragment.newInstance(); break;
+                    selectedFragment = bf1.newInstance(); break;
 
                 case R.id.navigation_dashboard:
                     selectedFragment = BlankFragment.newInstance(); break;
@@ -57,11 +59,13 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         context = this;
+        DatabaseHelper dbh = new DatabaseHelper(this);
+        SQLiteDatabase db = dbh.getWritableDatabase();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content, BlankFragment.newInstance());
         transaction.commit();
 
-        Button btn = findViewById(R.id.menubutton);
+
 
         mTextMessage = findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);

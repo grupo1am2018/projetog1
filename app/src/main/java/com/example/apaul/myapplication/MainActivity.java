@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Define o tipo de layout, neste caso grelha
         listaJogadores.setLayoutManager(new GridLayoutManager(MainActivity.this, 3));
+
         listaJogadores.setAdapter(adapter);
 
 
